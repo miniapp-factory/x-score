@@ -1,0 +1,224 @@
+
+# 2025-11-23 08:06:46.615433
++Code the following app
++```
++Title: Tweet Engagement Analyzer — Minimal
++
++Icon: /mnt/data/a77cf7de-8fea-4d98-91b4-ca28d168bf36.png
++
++Goal:
++Simple tool — accept a Twitter/X profile (URL or handle) and show average likes and views per tweet for 7, 30, 90 day windows. Minimal controls, fast feedback, compact results.
++
++Page structure (minimal)
++
++Header (small)
++
++Left: app icon + title Tweet Engagement Analyzer
++
++Right: small text Minimal
++
++Hero / Input (single row)
++
++Text input placeholder: @elonmusk or https://x.com/elonmusk
++
++Primary button: Analyze
++
++Below input (tiny text): Defaults: exclude replies, exclude retweets, max 200 tweets
++
++Loading state
++
++Inline spinner and text Analyzing… replace the button while fetching.
++
++Results (single compact row)
++
++Three small cards side-by-side (responsive stack on mobile):
++
++Card A: 7d — tweets: X • avg likes: Y • avg views: Z / “unavailable”
++
++Card B: 30d — same fields
++
++Card C: 90d — same fields
++
++Each card is one line of text, small font, subtle border. No charts.
++
++Raw data (collapsible)
++
++Hidden by default. Small link: Show tweets used (N) toggles a simple table:
++
++Columns: Date | Likes | Views | Tweet ID
++
++Table is plain and horizontally scrollable.
++
++Errors & edge copy
++
++Invalid handle → inline red text: Please enter a valid Twitter/X profile.
++
++Protected account → Profile is private — cannot analyze.
++
++No tweets in window → show Not enough data inside the relevant card.
++
++Data & API binding (exact)
++
++When user clicks Analyze, the front-end should POST JSON to /api/analyze:
++
++Request body:
++
++{
++  "handle": "elonmusk",          // string (backend should accept handle or full URL)
++  "includeReplies": false,
++  "includeRetweets": false,
++  "maxTweets": 200
++}
++
++
++Expect response JSON exactly like:
++
++{
++  "profile": { "username":"elonmusk", "profile_url":"https://x.com/elonmusk" },
++  "timeframes": {
++    "7":  { "tweet_count": 5, "avg_likes": 120, "avg_views": 4000, "engagement_rate": 0.03 },
++    "30": { "tweet_count": 20, "avg_likes": 90,  "avg_views": null,   "engagement_rate": null },
++    "90": { "tweet_count": 50, "avg_likes": 75,  "avg_views": 1500,  "engagement_rate": 0.05 }
++  },
++  "raw_sample": [ {"tweet_id":"1","created_at":"2025-11-22T12:00:00Z","likes":10,"views":200} ]
++}
++
++
++Note: If avg_views is null, show unavailable on the card.
++
++Behaviour details (one-line rules)
++
++Parse handle from input stripping https:// and @ automatically on submit.
++
++Disable Analyze while request in-flight.
++
++Show inline error messages (no modal).
++
++Cache last successful result in UI until a new search.
++
++Collapsible raw table must show tweet count N in toggle label.
++
++Styling guidance (minimal)
++
++Neutral background, white cards, small rounded corners.
++
++Compact typography (small labels, medium numbers).
++
++Keep vertical spacing tight — single-column hero + results row.
++
++No charts, no animations (keep it fast and minimal).
++```
++
++Generate an app logo and update the app metadata title and description.
+
+# 2025-11-23 08:06:46.616285
++Code the following app
++```
++Title: Tweet Engagement Analyzer — Minimal
++
++Icon: /mnt/data/a77cf7de-8fea-4d98-91b4-ca28d168bf36.png
++
++Goal:
++Simple tool — accept a Twitter/X profile (URL or handle) and show average likes and views per tweet for 7, 30, 90 day windows. Minimal controls, fast feedback, compact results.
++
++Page structure (minimal)
++
++Header (small)
++
++Left: app icon + title Tweet Engagement Analyzer
++
++Right: small text Minimal
++
++Hero / Input (single row)
++
++Text input placeholder: @elonmusk or https://x.com/elonmusk
++
++Primary button: Analyze
++
++Below input (tiny text): Defaults: exclude replies, exclude retweets, max 200 tweets
++
++Loading state
++
++Inline spinner and text Analyzing… replace the button while fetching.
++
++Results (single compact row)
++
++Three small cards side-by-side (responsive stack on mobile):
++
++Card A: 7d — tweets: X • avg likes: Y • avg views: Z / “unavailable”
++
++Card B: 30d — same fields
++
++Card C: 90d — same fields
++
++Each card is one line of text, small font, subtle border. No charts.
++
++Raw data (collapsible)
++
++Hidden by default. Small link: Show tweets used (N) toggles a simple table:
++
++Columns: Date | Likes | Views | Tweet ID
++
++Table is plain and horizontally scrollable.
++
++Errors & edge copy
++
++Invalid handle → inline red text: Please enter a valid Twitter/X profile.
++
++Protected account → Profile is private — cannot analyze.
++
++No tweets in window → show Not enough data inside the relevant card.
++
++Data & API binding (exact)
++
++When user clicks Analyze, the front-end should POST JSON to /api/analyze:
++
++Request body:
++
++{
++  "handle": "elonmusk",          // string (backend should accept handle or full URL)
++  "includeReplies": false,
++  "includeRetweets": false,
++  "maxTweets": 200
++}
++
++
++Expect response JSON exactly like:
++
++{
++  "profile": { "username":"elonmusk", "profile_url":"https://x.com/elonmusk" },
++  "timeframes": {
++    "7":  { "tweet_count": 5, "avg_likes": 120, "avg_views": 4000, "engagement_rate": 0.03 },
++    "30": { "tweet_count": 20, "avg_likes": 90,  "avg_views": null,   "engagement_rate": null },
++    "90": { "tweet_count": 50, "avg_likes": 75,  "avg_views": 1500,  "engagement_rate": 0.05 }
++  },
++  "raw_sample": [ {"tweet_id":"1","created_at":"2025-11-22T12:00:00Z","likes":10,"views":200} ]
++}
++
++
++Note: If avg_views is null, show unavailable on the card.
++
++Behaviour details (one-line rules)
++
++Parse handle from input stripping https:// and @ automatically on submit.
++
++Disable Analyze while request in-flight.
++
++Show inline error messages (no modal).
++
++Cache last successful result in UI until a new search.
++
++Collapsible raw table must show tweet count N in toggle label.
++
++Styling guidance (minimal)
++
++Neutral background, white cards, small rounded corners.
++
++Compact typography (small labels, medium numbers).
++
++Keep vertical spacing tight — single-column hero + results row.
++
++No charts, no animations (keep it fast and minimal).
++```
++
++Generate an app logo and update the app metadata title and description.
